@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react';
-import { MobXProviderContext, observer } from 'mobx-react';
+import React from 'react';
+import { observer, inject } from 'mobx-react';
 
-function useStores() {
-  return React.useContext(MobXProviderContext)
+
+function ACL(Child) {
+  @inject('store')
+  @observer
+  class ACL extends React.Component {
+    render() {
+      const { store } = this.props;
+
+      if (!store.authStore.userInfo.uid && store.authStore.userInfo.uid !== 'loading') {
+        window.location.href = '/login';
+      }
+      
+      return store.authStore.userInfo.uid ? <Child /> : null;
+    }
+  }
+
+  return ACL;
 }
 
-function ACL() {
-  const { store } = useStores();
-
-  useEffect(() => {
-    store.authStore.fetchUserInfo();
-  }, [store.authStore, store.authStore.userInfo.uid]);
-
-  return (
-    <div>
-      {store.authStore.userInfo.uid}
-    </div>
-  )
-}
-
-export default observer(ACL);
+export default ACL;

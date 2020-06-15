@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MobXProviderContext } from 'mobx-react';
+import React, { useState, useEffect } from 'react';
+import { MobXProviderContext, observer } from 'mobx-react';
 
 import LoginForm from '../layout/LoginForm';
 
@@ -7,6 +7,7 @@ import LoginForm from '../layout/LoginForm';
 function useStores() {
   return React.useContext(MobXProviderContext)
 }
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -27,6 +28,10 @@ function Login() {
     }
   }
 
+  if (store.authStore.userInfo.uid && store.authStore.userInfo.uid !== 'loading') {
+    window.location.href = '/';
+  }
+
   return (
     <div className="login__container">
       <LoginForm
@@ -38,4 +43,4 @@ function Login() {
   )
 };
 
-export default Login;
+export default observer(Login);
