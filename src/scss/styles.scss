@@ -1,0 +1,13 @@
+// IMPORT DEFAULT FONT
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap");
+
+// IMPORT ABSTRACTS
+@import "./abstracts/variables.scss";
+
+// IMPORT BASE
+@import "./base/typography.scss";
+@import "./base/utilities.scss";
+
+// IMPORT COMPONENT
+@import "./components/main.scss";
+@import "./components/table.scss";

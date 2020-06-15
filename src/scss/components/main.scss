@@ -1,0 +1,15 @@
+.main-container {
+    max-width: 50rem;
+    margin: 6rem auto;
+
+    background-color: $color-black-2;
+    border-radius: 2px;
+
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
+
+.main__table--position {
+    max-width: 46rem;
+    padding: 1rem 0;
+    margin: auto;
+}

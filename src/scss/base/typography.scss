@@ -1,0 +1,27 @@
+body {
+    box-sizing: border-box;
+    font-family: $default-font;
+    line-height: 1.8;
+    font-size: 14px;
+    cursor: default;
+}
+
+th {
+    padding: 0.5rem 0;
+}
+
+tr {
+    &:not(:last-child) {
+        border: solid;
+        border-color: $color-black-1;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0.5px;
+        border-bottom-width: 0.5px;
+    }
+}
+
+table {
+    padding: 2rem 2rem;
+    border-collapse: collapse;
+}
