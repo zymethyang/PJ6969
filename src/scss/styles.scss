@@ -9,5 +9,11 @@
 @import "./base/utilities.scss";
 
 // IMPORT COMPONENT
-@import "./components/main.scss";
 @import "./components/table.scss";
+
+// IMPORT LAYOUT
+@import "./layout/login-form.scss";
+
+// IMPORT PAGES
+@import "./pages/main.scss";
+@import "./pages/login.scss";
