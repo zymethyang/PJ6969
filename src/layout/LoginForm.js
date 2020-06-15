@@ -25,7 +25,7 @@ function LoginForm(props) {
       <input
         className="form__password--input"
         name="password"
-        type="text"
+        type="password"
         onChange={onChange}
       />
       <button

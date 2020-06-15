@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './page/Login';
+import ACL from './shared/ACL';
 import './scss/styles.scss';
 
 function App() {
   return (
     <>
-      <Login />
+      <ACL />
     </>
   );
 }
