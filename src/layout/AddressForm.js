@@ -3,7 +3,7 @@ import React from 'react';
 const INPUT_FIELD = [
   {
     title: 'Street Name',
-    name: 'street-name',
+    name: 'street_name',
   },
   {
     title: 'Ward',
@@ -47,7 +47,6 @@ function AddressForm(props) {
       }
       <div className="address-form__input-field">
         <label
-          htmlFor="item-name-input"
           className="address-form--label gray"
         >
           Ảnh

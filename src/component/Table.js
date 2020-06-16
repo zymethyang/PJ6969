@@ -6,7 +6,49 @@ function useStores() {
   return React.useContext(MobXProviderContext)
 }
 
-function Table() {
+function AddAddressBtn() {
+  return (
+    <tr className="table__row black-1">
+      <th className="black-1">
+        <Link to="/add">
+          <span className="material-icons table__row--icon">add</span>
+              New
+            </Link>
+      </th>
+    </tr>
+  )
+}
+
+function RenderRows({ store, onPressEdit, onPressDelete }) {
+  return (
+    <>
+      {
+        store.locationStore.location.map((loc) => (
+          <tr className="table__row black-1" key={loc.key}>
+            <th>{loc.street_name}</th>
+            <th>{loc.ward}</th>
+            <th>{loc.district}</th>
+            <th>{loc.city}</th>
+            <th>{loc.country}</th>
+            <th>
+              {
+                loc.owner_id === store.authStore.userInfo.uid
+                  ? (
+                    <span>
+                      <span onClick={() => onPressEdit(loc.key)}>Edit </span>
+                      <span onClick={() => onPressDelete(loc.key)}>Delete</span>
+                    </span>
+                  ) : null
+              }
+            </th>
+          </tr>
+        ))
+      }
+    </>
+  )
+}
+
+function Table({ onPressDelete, onPressEdit }) {
   const { store } = useStores();
 
   return (
@@ -23,25 +65,11 @@ function Table() {
       </thead>
       <tbody>
         {
-          store.locationStore.location.map((loc) => (
-            <tr className="table__row black-1" key={loc.key}>
-              <th>{loc['street-name']}</th>
-              <th>{loc.ward}</th>
-              <th>{loc.district}</th>
-              <th>{loc.city}</th>
-              <th>{loc.country}</th>
-              <th></th>
-            </tr>
-          ))
+          RenderRows({ store, onPressEdit, onPressDelete })
         }
-        <tr className="table__row black-1">
-          <Link to="/add">
-            <th className="black-1">
-              <span className="material-icons table__row--icon">add</span>
-            New
-          </th>
-          </Link>
-        </tr>
+        {
+          AddAddressBtn()
+        }
       </tbody>
     </table>
   );

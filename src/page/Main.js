@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { MobXProviderContext, observer } from 'mobx-react';
+import { MobXProviderContext } from 'mobx-react';
+import { useHistory } from 'react-router-dom';
+import { deleteDatabase } from '../shared/database';
 import Table from '../component/Table';
 
 
@@ -9,6 +11,7 @@ function useStores() {
 
 function Main() {
   const { store } = useStores();
+  const history = useHistory();
 
   useEffect(() => {
     store.locationStore.fetchLocationList();
@@ -17,7 +20,10 @@ function Main() {
   return (
     <div className="main-container">
       <div className="main__table--position">
-        <Table />
+        <Table
+          onPressDelete={(key) => deleteDatabase({ ref: `/location/${key}` })}
+          onPressEdit={(key) => history.replace(`/edit/${key}`)}
+        />
       </div>
       <div className="main__button--position">
         <button className="button--style" onClick={() => store.authStore.signOut()}>Đăng xuất</button>
@@ -26,4 +32,4 @@ function Main() {
   );
 }
 
-export default observer(Main);
+export default Main;
