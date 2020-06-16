@@ -24,7 +24,7 @@ function RenderRows({ store, onPressEdit, onPressDelete }) {
     <>
       {
         store.locationStore.location.map((loc) => (
-          <tr className="table__row black-1" key={loc.key}>
+          <tr className="table__row black-1" key={loc.id}>
             <th>{loc.street_name}</th>
             <th>{loc.ward}</th>
             <th>{loc.district}</th>
@@ -38,8 +38,8 @@ function RenderRows({ store, onPressEdit, onPressDelete }) {
                 loc.owner_id === store.authStore.userInfo.uid
                   ? (
                     <span>
-                      <span onClick={() => onPressEdit(loc.key)}>Edit </span>
-                      <span onClick={() => onPressDelete(loc.key)}>Delete</span>
+                      <span onClick={() => onPressEdit(loc.id)}>Edit </span>
+                      <span onClick={() => onPressDelete(loc.id)}>Delete</span>
                     </span>
                   ) : null
               }

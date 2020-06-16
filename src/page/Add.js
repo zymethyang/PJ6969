@@ -58,7 +58,7 @@ class Add extends React.Component {
     const uploadDocument = { ...data };
     uploadDocument.owner_id = uid;
 
-    pushDatabase({ ref: '/location', data: uploadDocument }).then(() => {
+    pushDatabase({ ref: 'locations', data: uploadDocument }).then(() => {
       this.clearState();
       alert("Đã lưu!");
     }).catch((err) => {

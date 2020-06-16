@@ -9,6 +9,7 @@ function useStores() {
   return React.useContext(MobXProviderContext)
 }
 
+
 function Main() {
   const { store } = useStores();
   const history = useHistory();
@@ -17,11 +18,18 @@ function Main() {
     store.locationStore.fetchLocationList();
   }, [store.locationStore, store.locationStore.location]);
 
+  function deleteLocation({ key }) {
+    deleteDatabase({ ref: `locations/${key}` });
+    store.locationStore.deleteLocation({ objectId: key })
+  }
+
+  console.log(store);
+
   return (
     <div className="main-container">
       <div className="main__table--position">
         <Table
-          onPressDelete={(key) => deleteDatabase({ ref: `/location/${key}` })}
+          onPressDelete={(key) => deleteLocation({ key })}
           onPressEdit={(key) => history.replace(`/edit/${key}`)}
         />
       </div>

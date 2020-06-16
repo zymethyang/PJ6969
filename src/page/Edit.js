@@ -46,14 +46,14 @@ class Edit extends React.Component {
 
   onSubmit({ data }) {
     const { match: { params: { id } } } = this.props;
-    putDatabase({ ref: `/location/${id}`, data }).then(() => {
+    putDatabase({ ref: `locations/${id}`, data }).then(() => {
       alert("Đã lưu!");
     }).catch((err) => {
       alert(err);
     });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const fileButton = document.getElementById('fileButton');
 
     fileButton.addEventListener('change', async (e) => {
@@ -66,12 +66,8 @@ class Edit extends React.Component {
     });
 
     const { match: { params: { id } } } = this.props;
-    getDatabase({ ref: `/location/${id}` }).once('value', (snapshot) => {
-      const doc = snapshot.val();
-      if (doc) {
-        this.setState(doc)
-      }
-    });
+    const doc = await getDatabase({ ref: `locations/${id}` });
+    this.setState(doc)
   }
 
   render() {
