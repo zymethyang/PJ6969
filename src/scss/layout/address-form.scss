@@ -14,25 +14,23 @@
         grid-template-rows: 1fr;
     }
 
-    &__username {
-        &--label {
-            grid-row: 1/2;
-            grid-column: 1/2;
-            align-self: center;
-        }
+    &--label {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        align-self: center;
+    }
 
-        &--input {
-            grid-row: 1/2;
-            grid-column: 2/3;
-            align-self: center;
-            padding: 1rem;
-            border-width: 0;
-            border-radius: 1rem;
-            background-color: $color-purple-1;
+    &--input {
+        grid-row: 1/2;
+        grid-column: 2/3;
+        align-self: center;
+        padding: 1rem;
+        border-width: 0;
+        border-radius: 1rem;
+        background-color: $color-purple-1;
 
-            &:focus {
-                outline: none;
-            }
+        &:focus {
+            outline: none;
         }
     }
 

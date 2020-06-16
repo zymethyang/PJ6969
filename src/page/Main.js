@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
 import Table from '../component/Table';
 
@@ -10,7 +10,9 @@ function useStores() {
 function Main() {
   const { store } = useStores();
 
-  console.log(store.authStore.userInfo.uid);
+  useEffect(() => {
+    store.locationStore.fetchLocationList();
+  }, [store.locationStore, store.locationStore.location]);
 
   return (
     <div className="main-container">

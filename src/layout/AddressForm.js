@@ -24,27 +24,40 @@ const INPUT_FIELD = [
 ]
 
 function AddressForm(props) {
-  const { onChange, onPressSubmit } = props;
+  const { onChange, onPressSubmit, value } = props;
   return (
     <form className="address-form__container">
       {
         INPUT_FIELD.map((field) => (
-          <div className="address-form__input-field">
+          <div className="address-form__input-field" key={field.name}>
             <label
-              htmlFor="item-name-input"
-              className="address-form__username--label gray"
+              className="address-form--label gray"
             >
               {field.title}
             </label>
             <input
-              className="address-form__username--input"
+              className="address-form--input"
               name={field.name}
               type="text"
               onChange={onChange}
+              value={value[field.name]}
             />
           </div>
         ))
       }
+      <div className="address-form__input-field">
+        <label
+          htmlFor="item-name-input"
+          className="address-form--label gray"
+        >
+          Ảnh
+        </label>
+        <input
+          className="address-form--input"
+          type="file"
+          id="fileButton"
+        />
+      </div>
       <button
         className="address-form__submit"
         type="button"

@@ -15,6 +15,7 @@ import ACL from './shared/ACL';
 import './scss/styles.scss';
 
 const MainPage = ACL(Main);
+const AddPage = ACL(Add);
 
 function useStores() {
   return React.useContext(MobXProviderContext)
@@ -33,7 +34,7 @@ function App() {
           <MainPage />
         </Route >
         <Route path="/add">
-          <Add />
+          <AddPage />
         </Route>
         <Route path="/login">
           <Login />
