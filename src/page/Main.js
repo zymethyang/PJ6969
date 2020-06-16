@@ -26,7 +26,7 @@ function Main() {
         />
       </div>
       <div className="main__button--position">
-        <button className="button--style" onClick={() => store.authStore.signOut()}>Đăng xuất</button>
+        <button className="main__button--style" onClick={() => store.authStore.signOut()}>Đăng xuất</button>
       </div>
     </div>
   );

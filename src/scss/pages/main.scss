@@ -4,17 +4,39 @@
 
     // background-color: $color-black-2;
     border-radius: 2px;
-
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 }
 
-.main__table--position {
-    max-width: 46rem;
-    padding: 1rem 0;
-    margin: auto;
+.main__table {
+    &--position {
+        max-width: 46rem;
+        padding: 1rem 0;
+        margin: auto;
+    }
 }
 
-.main__button--position{
-    text-align: center;
-    padding: 1rem;
+.main__button {
+    &--position {
+        text-align: center;
+        padding: 1rem;
+    }
+    &--style {
+        padding: 0.5rem;
+        border-width: 0;
+        border-radius: 1px;
+        background-color: $color-black-1;
+        color: $color-white;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #9c27b0;
+            transition: all 0.4s;
+        }
+
+        &:hover::after {
+            background-color: $color-black-1;
+            transition: all 0.6s;
+        }
+    }
 }
