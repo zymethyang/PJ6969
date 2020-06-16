@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import AddressForm from '../layout/AddressForm';
 import { putDatabase, getDatabase } from '../shared/database';
 import { pushStorage } from '../shared/storage';
+import { geoPosition, geoPositionText } from '../shared/geoLoc';
 
 
 @inject('store')
@@ -18,7 +19,7 @@ class Edit extends React.Component {
       'city': '',
       'country': '',
       'img': '',
-      'ower_id': '',
+      'owner_id': '',
     }
   }
 
@@ -31,9 +32,20 @@ class Edit extends React.Component {
     })
   }
 
+  async onPressGeoLoc() {
+    const position = await geoPosition();
+    const positionText = await geoPositionText({ longitude: position.longitude, latitude: position.latitude });
+
+    this.setState({
+      city: positionText.city,
+      country: positionText.country,
+      district: positionText.district,
+      street_name: positionText.street_name,
+    });
+  }
+
   onSubmit({ data }) {
     const { match: { params: { id } } } = this.props;
-
     putDatabase({ ref: `/location/${id}`, data }).then(() => {
       alert("Đã lưu!");
     }).catch((err) => {
@@ -68,7 +80,9 @@ class Edit extends React.Component {
         <AddressForm
           value={this.state}
           onChange={(e) => this.onValueChange(e)}
+          onPressGoBack={() => this.props.history.replace('/')}
           onPressSubmit={() => this.onSubmit({ data: this.state })}
+          onPressGeoLoc={() => this.onPressGeoLoc()}
         />
       </div>
     )

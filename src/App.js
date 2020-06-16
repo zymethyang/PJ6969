@@ -35,9 +35,7 @@ function App() {
         <Route path="/" exact={true}>
           <MainPage />
         </Route >
-        <Route path="/add">
-          <AddPage />
-        </Route>
+        <Route path="/add" render={(props) => <AddPage {...props} />} />
         <Route path="/edit/:id" render={(props) => <EditPage {...props} />} />
         <Route path="/login">
           <Login />

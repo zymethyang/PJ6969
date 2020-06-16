@@ -1,7 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
 import firebase from './firebase';
 
 export function pushStorage({ ref, file }) {
-  const storageRef = firebase.storage().ref(ref + file.name);
+  const storageRef = firebase.storage().ref(ref + `/${uuidv4()}.jpg`);
   const task = storageRef.put(file);
   return new Promise((resolve, reject) => {
     task.on('state_changed', function progress(snapshot) {

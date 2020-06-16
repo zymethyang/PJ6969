@@ -34,10 +34,16 @@
         }
     }
 
-    &__submit {
-        margin-top: 2rem;
+    &__footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    &__button {
+        margin: 2rem;
         align-self: center;
-        padding: 1rem 4rem;
+        padding: 1rem 2rem;
         border-width: 0;
         border-radius: 1rem;
         background-color: $color-black-1;

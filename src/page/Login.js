@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
+import { useHistory } from 'react-router-dom';
 
 import LoginForm from '../layout/LoginForm';
 
@@ -13,6 +14,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { store } = useStores();
+  const history = useHistory();
 
   function onValueChange(e) {
     const { name, value } = e.target;
@@ -29,7 +31,7 @@ function Login() {
   }
 
   if (store.authStore.userInfo.uid && store.authStore.userInfo.uid !== 'loading') {
-    window.location.href = '/';
+    history.replace('/');
   }
 
   return (

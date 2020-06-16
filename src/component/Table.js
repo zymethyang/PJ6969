@@ -13,7 +13,7 @@ function AddAddressBtn() {
         <Link to="/add">
           <span className="material-icons table__row--icon">add</span>
               New
-            </Link>
+        </Link>
       </th>
     </tr>
   )
@@ -30,6 +30,9 @@ function RenderRows({ store, onPressEdit, onPressDelete }) {
             <th>{loc.district}</th>
             <th>{loc.city}</th>
             <th>{loc.country}</th>
+            <th>
+              <img src={loc.img} width="20px" height="20px" alt="alt tag" />
+            </th>
             <th>
               {
                 loc.owner_id === store.authStore.userInfo.uid
@@ -60,6 +63,7 @@ function Table({ onPressDelete, onPressEdit }) {
           <th><span className="material-icons table__row--icon">subject</span>District</th>
           <th><span className="material-icons table__row--icon">subject</span>City</th>
           <th><span className="material-icons table__row--icon">subject</span>Country</th>
+          <th><span className="material-icons table__row--icon">subject</span>Image</th>
           <th><span className="material-icons table__row--icon">subject</span>Actions</th>
         </tr>
       </thead>

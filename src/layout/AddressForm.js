@@ -24,7 +24,7 @@ const INPUT_FIELD = [
 ]
 
 function AddressForm(props) {
-  const { onChange, onPressSubmit, value } = props;
+  const { onChange, onPressSubmit, onPressGeoLoc, onPressGoBack, value } = props;
   return (
     <form className="address-form__container">
       {
@@ -57,13 +57,29 @@ function AddressForm(props) {
           id="fileButton"
         />
       </div>
-      <button
-        className="address-form__submit"
-        type="button"
-        onClick={() => onPressSubmit()}
-      >
-        Xác nhận
-      </button>
+      <div className="address-form__footer">
+        <button
+          className="address-form__button"
+          type="button"
+          onClick={() => onPressGeoLoc()}
+        >
+          Tọa độ
+        </button>
+        <button
+          className="address-form__button"
+          type="button"
+          onClick={() => onPressGoBack()}
+        >
+          Quay lại
+        </button>
+        <button
+          className="address-form__button"
+          type="button"
+          onClick={() => onPressSubmit()}
+        >
+          Xác nhận
+        </button>
+      </div>
     </form >
   )
 }
