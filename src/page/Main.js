@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react';
-import { MobXProviderContext } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
 import { deleteDatabase } from '../shared/database';
 import Table from '../component/Table';
 
-
-function useStores() {
-  return React.useContext(MobXProviderContext)
-}
-
-function Main() {
-  const { store } = useStores();
+function Main(props) {
+  const { store } = props;
   const history = useHistory();
 
   useEffect(() => {

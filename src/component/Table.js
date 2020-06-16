@@ -19,7 +19,8 @@ function AddAddressBtn() {
   )
 }
 
-function RenderRows({ store, onPressEdit, onPressDelete }) {
+function RenderRows({ onPressEdit, onPressDelete }) {
+  const { store } = useStores();
   return (
     <>
       {
@@ -52,8 +53,6 @@ function RenderRows({ store, onPressEdit, onPressDelete }) {
 }
 
 function Table({ onPressDelete, onPressEdit }) {
-  const { store } = useStores();
-
   return (
     <table className="table__container">
       <thead>
@@ -69,7 +68,7 @@ function Table({ onPressDelete, onPressEdit }) {
       </thead>
       <tbody>
         {
-          RenderRows({ store, onPressEdit, onPressDelete })
+          RenderRows({ onPressEdit, onPressDelete })
         }
         {
           AddAddressBtn()

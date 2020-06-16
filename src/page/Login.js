@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
-import { MobXProviderContext, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
 
 import LoginForm from '../layout/LoginForm';
 
 
-function useStores() {
-  return React.useContext(MobXProviderContext)
-}
-
-
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { store } = useStores();
   const history = useHistory();
+  const { store } = props;
 
   function onValueChange(e) {
     const { name, value } = e.target;
